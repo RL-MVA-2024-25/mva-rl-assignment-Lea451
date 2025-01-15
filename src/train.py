@@ -156,29 +156,7 @@ class ProjectAgent:
         self.policy.load_state_dict(torch.load("policy.pth", weights_only=True, map_location=torch.device('cpu')))
         self.value.load_state_dict(torch.load("value.pth",  weights_only=True, map_location=torch.device('cpu')))
           
-def plot_rewards(train_rewards, val_rewards_fixed, val_rewards_rand):
-    """
-    Plot training rewards.
-    """
-    import matplotlib.pyplot as plt
-    import os
-
-    plt.figure(figsize=(10, 6))
-    plt.plot(train_rewards, label="Training Reward")
-    plt.plot(val_rewards_fixed, label="Validation Reward Fixed")
-    plt.plot(val_rewards_rand, label="Validation Reward Random")
-    plt.xlabel("Episode")
-    plt.ylabel("Reward")
-    plt.yscale("log")
-    plt.title("Training and Validation Rewards")
-    plt.legend()
-    plt.grid()
-
-    # Create logs directory if it does not exist
-    if not os.path.exists("logs"):
-        os.makedirs("logs")
-    plt.savefig("./logs/rewards_plot.png")
-    plt.show()          
+        
 
 #class DQN(nn.Module):
 #    def __init__(self, input_size=6, output_size=4): 
